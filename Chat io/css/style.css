@@ -1,0 +1,99 @@
+body,html{
+    height: 100%;
+    width: 100%;
+    
+
+}
+#mid-sec{
+    margin-top: 150px;
+    display: block;
+}
+.top-h{
+    font-family: Century Gothic;
+    font-size: 60px;
+    font-weight: 1000;
+    color: aliceblue;
+}
+.top-p{
+    font-family: Century Gothic;
+    font-size: 25px;
+    color: aliceblue;
+}
+@media (max-width: 823px) {
+    #mid-sec{
+        margin-top: 25px;
+    }
+   .top-h{
+       font-size:20px;
+   }
+   .top-p{
+       font-size: 15px;
+   }
+   #sec-part{
+       font-size:8px;
+   }
+}
+#top{
+    height: 100%;
+    width: 100%;
+}
+.background {  
+    position:absolute;
+     background-image: url("https://images.pexels.com/photos/266520/pexels-photo-266520.jpeg?cs=srgb&dl=amber-ash-blaze-266520.jpg&fm=jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:block; 
+    top:0;
+    left:0;
+    z-index:0;
+}
+#sec-part{
+    background-color: black;
+    color: aliceblue;
+    font-family: Century Gothic;
+    font-size: 15px;
+    border: none;
+    padding: 50px;
+    
+}
+#third-part{
+    background-color: black;
+    border: none;
+}
+#forth-part{
+    font-family: Century Gothic;
+    font-size: 15px;
+    color: aliceblue;
+    background-color: black;
+    border: none;
+}
+#fifth-part{
+    background-color: black;
+    color: aliceblue;
+   
+}
+
+.modal-content{
+    border-radius: 10px;
+    border: none;
+    background-color:rgba(0, 0, 0, 0.9);
+   
+}
+.modal-header{
+  border: none;
+    color: aliceblue;
+}
+.modal-body{
+    font-family: Century Gothic;
+    border: none;
+    color: aliceblue
+}
+.modal-footer{
+    font-family: Century Gothic;
+    border:none;
+    color: aliceblue;
+    
+}
+
+
+

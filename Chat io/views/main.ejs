@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Fiverr</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <script>
+        window.onload = function () {
+            var particles = Particles.init({
+                selector: '.background',
+                color: ['#FF4500', '#404B69', '#DBEDF3'],
+                connectParticles: true,
+                maxParticles: 150,
+                speed: 0.3,
+                sizeVariations: 8,
+
+                responsive: [{
+                    breakpoint: 768,
+                    options: {
+                        maxParticles: 300,
+                        color: ['#DA0463', '#404B69', '#DBEDF3'],
+                        connectParticles: false
+                    }
+                }]
+
+            });
+        };
+
+    </script>
+
+
+</head>
+
+<body>
+    <!--FIRST PART-->
+
+    <div class="container-fluid" id="top">
+        <canvas class="background"></canvas>
+        <nav class="navbar navbar-expand-md">
+            <a class="navbar-brand" href="#">
+                <label style="font-family: Century Gothic;color:#f8f5f5; font-size: 30px; font-weight: 800">
+                    chat i/o
+                </label>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                ≡
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#">Login</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#login">Admin</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#login">User</a>
+
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#signup" data-toggle="modal" data-target="#signup">Signup</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+
+        <div class="container" id="mid-sec">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="top-h">
+                        Chat i/o
+                    </h2>
+                    <p class="top-p">
+                        Free Online Chat Service
+                    </p>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#signup">Signup</button>
+                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#login">Login
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--Login form-->
+
+
+    <div class="modal fade" id="login" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button></div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 style="font-family: Century Gothic;font-weight: 400">Login</h1>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-body text-center">
+                    <form role="form" method="POST" action="/login">
+                        <div class="form-group">
+                            <label for="usrname">Email</label>
+                            <input type="text" class="form-control" id="usrname" placeholder="Enter email" name="logemail"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="psw">Password</label>
+                            <input type="password" class="form-control" id="psw" placeholder="Enter password" name="logpassword"
+                                required>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" checked>Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-block btn-outline-danger" name="login">Login</button>
+                        <button type="cancel" class="btn btn-block btn-outline-danger" data-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+                <div class="modal-footer text-center">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Not a member? <a href="#">Sign Up</a></p>
+                                <p>Forgot <a href="#">Password</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!--Signup form-->
+
+    <div class="modal fade" id="signup">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="container-fluid" style="font-family: Century Gothic;">
+                        <div class="row p-4">
+                            <div class="col-md-11">
+                                <h1>Signup</h1>
+                            </div>
+                            <div class="col-md-1"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tab-content">
+                                    <div class="tab-pane container active" id="teacher">
+                                        <!-- form-->
+                                        <form method="POST" action="/user">
+                                            <!--First name,last name-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="fname">First name</label>
+                                                        <input type="text" name="tfname" placeholder="First name" class="form-control"
+                                                            id="ttfname" required>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="lname">Last name</label>
+                                                        <input type="text" name="tlname" placeholder="Last name" class="form-control"
+                                                            id="ttlname" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Email-->
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="Email">Email</label>
+                                                        <input type="email" name="temail" placeholder="Email Address"
+                                                            class="form-control" id="ttemail" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--password,confirm password-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="password">Password</label>
+                                                        <input type="password" name="tpassword" placeholder="Password"
+                                                            class="form-control" id="ttpassword" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="password">Confirm Password</label>
+                                                        <input type="password" name="tcpassword" placeholder="Confirm Password"
+                                                            class="form-control" id="ttcpassword" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--Buttons-->
+                                            <div class="row p-2">
+                                                <div class="col-md-6">
+                                                    <button type="submit" class="btn btn-block btn-outline-danger" name="tsubmit">Submit</button>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="cancel" class="btn btn-block btn-outline-danger"
+                                                        data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--form end-->
+
+
+
+
+
+
+                <script src="particles.min.js"></script>
+
+
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+                    crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+                    crossorigin="anonymous"></script>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+
+
+
+</body>
+
+</html>

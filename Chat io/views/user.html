@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" const="text/html;charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <title>Simple Chat App</title>
+    <style>
+        body{
+        height: 100%;
+    				background-image: url("https://images.pexels.com/photos/1367188/pexels-photo-1367188.jpeg?cs=srgb&dl=4k-wallpaper-black-and-white-cloudiness-1367188.jpg&fm=jpg");
+    				background-repeat: no-repeat;
+					background-size: cover;
+       }
+       #top{
+           background-color: mediumslateblue;
+       }
+       #mid{
+        max-height: 70%;
+        max-width: 100%;
+       }
+       #last{
+        position: absolute;
+        bottom: 0;
+       }
+   </style>
+</head>
+
+<body>
+    <div class="container-fluid" id="top">
+        <div class="row">
+            <div class="col-mg-12">
+                <h1 style="color: white">Lets Chat.....</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="mid">
+        <div class="row">
+            <div class="col-md-12" id="chatroom">
+                <div id="feedback"></div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="container-fluid" id="last">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="change_username">
+                    <input id="username" class="form-control" type="text"><br>
+                    <button class="btn btn-info btn-block" id="send_username" type="button">Change username</button>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div id="input_zone">
+                    <input id="message" class="form-control" type="text"><br>
+                    <button id="send_message" class="btn btn-success btn-block" class="vertical-align" type="button">Send</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
+
+
+
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+
+            $(function () {
+                //make connection
+                var socket = io();
+
+                //buttons and inputs
+                var message = $("#message")
+                var username = $("#username")
+                var send_message = $("#send_message")
+                var send_username = $("#send_username")
+                var chatroom = $("#chatroom")
+                var feedback = $("#feedback")
+
+                //Emit message
+                send_message.click(function () {
+                    socket.emit('new_message', { message: message.val() })
+                })
+
+                //Listen on new_message
+                socket.on("new_message", (data) => {
+                    feedback.html('');
+                    message.val('');
+                    chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
+                })
+
+                //Emit a username
+                send_username.click(function () {
+                    socket.emit('change_username', { username: username.val() })
+                })
+
+                //Emit typing
+                message.bind("keypress", () => {
+                    socket.emit('typing')
+                })
+
+                //Listen on typing
+                socket.on('typing', (data) => {
+                    feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
+                })
+            });
+
+        </script>
+
+
+</body>
+
+</html>
